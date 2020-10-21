@@ -1,0 +1,332 @@
+﻿{
+	"destination": "detailScreen",
+	"windowMinWidth": 920,
+	"windowMinHeight": 600,
+	"width": 920,
+	"height": 600,
+	"menuBar": "Menu Bar #1",
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onTimer",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "US Letter",
+		"paperWidth": "612pt",
+		"paperHeight": "792pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Tab Control": {
+					"type": "tab",
+					"top": 20,
+					"left": 20,
+					"width": 880,
+					"height": 520,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSource": "TabControl",
+					"dataSourceTypeHint": "arrayText",
+					"labels": [
+						"Info",
+						"Demo"
+					],
+					"action": "GotoPage",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Button": {
+					"type": "button",
+					"top": 560,
+					"left": 800,
+					"width": 100,
+					"height": 20,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Demo",
+					"focusable": false,
+					"method": "ObjectMethods/Button.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"Text10": {
+					"type": "text",
+					"top": 80,
+					"left": 80,
+					"width": 680,
+					"height": 140,
+					"textAlign": "left",
+					"fontFamily": ".SF NS Text",
+					"fontSize": 28,
+					"text": "The \"On Before keystroke\" event is typically managed in enterable areas where characters must be filtered.",
+					"sizingX": "grow"
+				},
+				"Text4": {
+					"type": "text",
+					"top": 220,
+					"left": 160,
+					"width": 680,
+					"height": 140,
+					"sizingX": "grow",
+					"textAlign": "right",
+					"fontFamily": ".SF NS Text",
+					"fontSize": 28,
+					"text": "In list boxes, this event is now generated as soon as a character is typed, even if no cell is being edited.",
+					"sizingY": "fixed"
+				},
+				"Text6": {
+					"type": "text",
+					"top": 360,
+					"left": 80,
+					"width": 680,
+					"height": 140,
+					"sizingX": "grow",
+					"textAlign": "left",
+					"fontFamily": ".SF NS Text",
+					"fontSize": 28,
+					"text": "This event can be used to perform actions such as queries or highlights without any other input tool (e.g. search area) which can save a lot of time for users!"
+				}
+			}
+		},
+		{
+			"objects": {
+				"LB": {
+					"type": "listbox",
+					"left": 60,
+					"top": 120,
+					"width": 616,
+					"height": 400,
+					"events": [
+						"onLoad",
+						"onBeforeKeystroke"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.people",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"showFooters": false,
+					"scrollbarHorizontal": "hidden",
+					"hideFocusRing": false,
+					"method": "ObjectMethods/LB.4dm",
+					"headerHeight": "21px",
+					"columns": [
+						{
+							"header": {
+								"text": "Firstname",
+								"name": "Header1",
+								"dataSource": "Form:C1466.sortFirstname"
+							},
+							"name": "Column1",
+							"dataSource": "This:C1470.firstname",
+							"footer": {
+								"name": "Footer1",
+								"variableCalculation": "count"
+							},
+							"width": 120,
+							"minWidth": 100,
+							"maxWidth": 200,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "LastName"
+							},
+							"name": "Column2",
+							"dataSource": "This:C1470.lastname",
+							"footer": {
+								"name": "Footer2"
+							},
+							"width": 120,
+							"minWidth": 100,
+							"maxWidth": 200,
+							"events": [
+								"onClick",
+								"onAlternateClick"
+							],
+							"method": "ObjectMethods/Column2.4dm",
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Zip code"
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.zipcode",
+							"footer": {
+								"name": "Footer3",
+								"variableCalculation": "sum"
+							},
+							"width": 100,
+							"minWidth": 100,
+							"maxWidth": 200,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "City"
+							},
+							"name": "Column4",
+							"dataSource": "This:C1470.city",
+							"footer": {
+								"name": "Footer4"
+							},
+							"width": 120,
+							"minWidth": 100,
+							"maxWidth": 200,
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header5",
+								"text": "State"
+							},
+							"name": "Column5",
+							"dataSource": "This:C1470.state",
+							"footer": {
+								"name": "Footer5"
+							},
+							"width": 140,
+							"minWidth": 100,
+							"maxWidth": 200,
+							"enterable": false
+						}
+					]
+				},
+				"Radio Button": {
+					"type": "radio",
+					"text": "Query",
+					"top": 159,
+					"left": 717,
+					"width": 158,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.query",
+					"sizingX": "move",
+					"radioGroup": "G1",
+					"focusable": false
+				},
+				"Radio Button1": {
+					"type": "radio",
+					"text": "Highlight",
+					"top": 187,
+					"left": 717,
+					"width": 158,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.select",
+					"sizingX": "move",
+					"radioGroup": "G1",
+					"focusable": false
+				},
+				"Button1": {
+					"type": "button",
+					"text": "All records",
+					"top": 120,
+					"left": 717,
+					"width": 160,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button1.4dm",
+					"sizingX": "move",
+					"focusable": false
+				},
+				"Text1": {
+					"type": "text",
+					"top": 70,
+					"left": 60,
+					"width": 615,
+					"height": 38,
+					"textAlign": "center",
+					"fontFamily": ".SF NS Text",
+					"fontSize": 14,
+					"text": "The list box has the focus, so type any character to perform a query or a highlight!",
+					"sizingX": "grow"
+				},
+				"Input": {
+					"type": "input",
+					"left": 60,
+					"top": 704,
+					"width": 616,
+					"height": 48,
+					"dataSource": "Form:C1466.criteria",
+					"enterable": false,
+					"hideFocusRing": true,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"fontSize": 48,
+					"textAlign": "center",
+					"stroke": "#c0c0c0",
+					"sizingY": "move"
+				},
+				"btnTrace": {
+					"type": "checkbox",
+					"top": 502,
+					"left": 717,
+					"width": 163,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"dataSource": "Form:C1466.trace",
+					"text": "Trace code",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"Input1": {
+					"type": "input",
+					"left": 390,
+					"top": 550,
+					"width": 286,
+					"height": 40,
+					"dataSource": "Form:C1466.criteria",
+					"enterable": false,
+					"borderStyle": "none",
+					"contextMenu": "none",
+					"fill": "transparent",
+					"fontSize": 32,
+					"textAlign": "left",
+					"stroke": "#b1c4dd",
+					"sizingY": "move"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Typed character(s):",
+					"top": 550,
+					"left": 20,
+					"width": 360,
+					"height": 40,
+					"textAlign": "right",
+					"fontSize": 32,
+					"stroke": "#808080",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}
